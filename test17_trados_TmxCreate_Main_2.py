@@ -84,7 +84,7 @@ def start_1(file_fullname, lang2):
 
     with open(file_fullname, "r", encoding='utf-8') as file:           # r : read
             content = str(file.read())
-            content = content.replace('\n',' ')
+            content = content.replace('\n',' ')         # 엔터 제거
             # w = ''
             # for a in content:
             #     print(w)
@@ -100,28 +100,29 @@ def start_1(file_fullname, lang2):
             ru_execpt = []
 
             for index, value in enumerate(m):
-                    if(index%2==0):
-                        # print(index,"짝수입니다.")
-                        en_list = sentence_cut(value)                    
-                        en_len = len(en_list)
-                        # print(index,"짝수입니다.")
-                    else:
-                        # print("홀수입니다.")
-                        ru_list = sentence_cut(value)
-                        ru_len = len(ru_list)
-                        if en_len == ru_len:
-                            for en_val in en_list:
-                                en.append(en_val)
-                            for ru_val in ru_list:
-                                ru.append(ru_val)
-                        else:                           # 예외항목 별도 저장
-                            w=''
-                            q=''
-                            for i in en_list: w = w +' '+ i
-                            en_execpt.append(w)
-                            en_list
-                            for i in ru_list: q = q +' '+ i
-                            ru_execpt.append(q)
+                value = re.sub('<[^>]*>','',value)      # <>특수기호용 꺽세내용 제거
+                if(index%2==0):
+                    # print(index,"짝수입니다.")
+                    en_list = sentence_cut(value)                    
+                    en_len = len(en_list)
+                    # print(index,"짝수입니다.")
+                else:
+                    # print("홀수입니다.")
+                    ru_list = sentence_cut(value)
+                    ru_len = len(ru_list)
+                    if en_len == ru_len:
+                        for en_val in en_list:
+                            en.append(en_val)
+                        for ru_val in ru_list:
+                            ru.append(ru_val)
+                    else:                           # 예외항목 별도 저장
+                        w=''
+                        q=''
+                        for i in en_list: w = w +' '+ i
+                        en_execpt.append(w)
+                        en_list
+                        for i in ru_list: q = q +' '+ i
+                        ru_execpt.append(q)
 
             # print(en)
             # print(ru)
@@ -195,7 +196,7 @@ def start_1(file_fullname, lang2):
     with open(f'{file_path}\\{filename}.txt', "w", encoding='utf-8') as file:
         for index,i in enumerate(en_execpt):
             file.write('\n')
-            if index==0: file.write(str(len(en_execpt)))
+            if index==0: file.write(str(len(en_execpt))+'\n')
             file.write(str(index+1)+'\n')
             file.write(i)
         file.write('\n')    # en, ru구분을 위한 줄바꿈
@@ -203,7 +204,7 @@ def start_1(file_fullname, lang2):
         file.write('\n')    #
         for index,i in enumerate(ru_execpt):
             file.write('\n')
-            if index==0: file.write(str(len(ru_execpt)))
+            if index==0: file.write(str(len(ru_execpt))+'\n')
             file.write(str(index+1)+'\n')
             file.write(i)
 
