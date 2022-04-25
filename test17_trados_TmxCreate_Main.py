@@ -46,6 +46,7 @@ with open(file_fullname, "r", encoding='utf-8') as file:           # r : read
         ru_execpt = []
 
         for index, value in enumerate(m):
+                value = re.sub('<[^>]*>','',value)      # <>특수기호용 꺽세내용 제거
                 if(index%2==0):
                     # print(index,"짝수입니다.")
                     en_list = sentence_cut(value)                    
