@@ -7,8 +7,8 @@ import re
 
 
 path = 'D:\\Program Files\\Workspace\\00_Create\\'
-file = 'D:\\Program Files\\Workspace\\00_Create\\RF_(UK_TEXT)_1230.xlsx'
-file2 = 'D:\\Program Files\\Workspace\\00_Create\\RF_(UK_TEXT)_1230 - 복사본.xlsx'
+file = 'D:\\Program Files\\Workspace\\00_Create\\(lv-LV)RF_(UK_TEXT)_220303.xlsx'
+file2 = 'D:\\Program Files\\Workspace\\00_Create\\RF_(UK_TEXT)_220303.xlsx'
 
 
 # 파일오픈

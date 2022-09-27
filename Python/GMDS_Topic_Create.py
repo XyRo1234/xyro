@@ -24,13 +24,14 @@ browser = webdriver.Ie('./IEDriverServer.exe')
 browser.get(url)
 browser.set_window_position(0,0)
 browser.set_window_size(1020,1080)
-browser.find_element_by_id("username").send_keys("ws.jung")
-# # browser.find_element_by_id("password").send_keys("비밀번호 입력")
+browser.find_element_by_id("username").send_keys("edward.kwon")
+time.sleep(10)
+# browser.find_element_by_id("password").send_keys("비밀번호 입력")
 browser.find_element_by_class_name("login-button").click()
 time.sleep(1)
 
 path = "D:\\Program Files\\Workspace\\others\\GMDS\\"
-GMDS_info_file = 'GMDS_Topic_UK.xlsx'
+GMDS_info_file = 'GMDS_Topic_WM_US.xlsx'
 df_excel = pd.read_excel(f'{path}{GMDS_info_file}', index_col=None)
 
 # US_titles = ['How to Use the Ice and Water Dispenser', 'How to Use the Ice Maker', 'How to Clean the Inside of the Refrigerator', 'How to Clean the Air Filter', 'How to Change the Water Filter (located inside the refrigerator)', 'Refrigerator_Not_Cooling', 'In Door Ice Maker Not Working', 'Craft Ice Maker Not Working', 'Water Is Not Dispensing', 'Water Tastes Bad', 'Refrigerator Door Not Closing', 'How to Find My Refrigerator Model Number', 'Choosing the Proper Installation Location', 'How to Remove and Assemble the Refrigerator Door', 'How_to_Connect_the_Water_Line', 'How to Align the Refrigerator Door', 'How to Level the Refrigerator']
@@ -55,13 +56,13 @@ for title in titles:
     browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[3]/div[1]/div/select/option[2]').click()           # Not Belong 클릭
     browser.find_element_by_xpath('//*[@id="product-id"]/option[35]').click()                                           # Product(*) : VideoGuidance 클릭
     time.sleep(0.5)
-    browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[5]/div[2]/div/select/optgroup/option[2]').click()  # Platform : SxS
+    browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[5]/div[2]/div/select/optgroup/option[1]').click()  # Platform : Front Loader / SxS 
     time.sleep(0.5)
-    browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[6]/div[1]/div/select/optgroup/option[1]').click()  # Region : GLOBAL
-    # browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[6]/div[1]/div/select/optgroup/option[2]').click()  # Region : NORTH AMERICA
+    # browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[6]/div[1]/div/select/optgroup/option[1]').click()  # Region : GLOBAL
+    browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[6]/div[1]/div/select/optgroup/option[2]').click()  # Region : NORTH AMERICA
     browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[7]/div[1]/div/select/option[2]').click()           # Category : CC
     browser.find_element_by_xpath('/html/body/div[9]/div[2]/form/div[9]/button[3]').click()                             # Create 클릭
-    time.sleep(1)
+    time.sleep(2)
     Topic_No = browser.find_elements_by_class_name('topic-index-topic-info-open')[0].text       # Topic_No 정보가져오기
     Topic_No_list.append(Topic_No)
     Topic_Title = browser.find_elements_by_class_name('topic-index-topic-info-open')[2].text    # Topic_Title 정보가져오기

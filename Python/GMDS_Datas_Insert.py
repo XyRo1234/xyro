@@ -32,11 +32,13 @@ url = f'http://gmds.lge.com/lgcms/topics'
 browser.get(url)
 browser.set_window_position(0,0)
 browser.set_window_size(1020,600)
-browser.find_element_by_id("username").send_keys("ws.jung")
+browser.find_element_by_id("username").send_keys("edward.kwon")
+time.sleep(10)
+# browser.find_element_by_id("password").send_keys("비밀번호 입력")
 browser.find_element_by_class_name("login-button").click()
 
 path = "D:\\Program Files\\Workspace\\others\\GMDS\\"           # 엑셀파일 경로
-GMDS_info_file = 'GMDS_Topic_UK.xlsx'                           # 엑셀파일 명
+GMDS_info_file = 'GMDS_Topic_WM_US.xlsx'                           # 엑셀파일 명
 df = pd.read_excel(f'{path}{GMDS_info_file}', index_col=None)   # 엑셀 DataFrame 가져오기
 
 i=0

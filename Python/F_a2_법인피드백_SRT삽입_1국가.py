@@ -9,7 +9,7 @@ import pandas as pd
 
 
 # path = 'D:\\영상콘텐츠\\냉장고\\언어Vari_220216_2차'
-path = r'D:\영상콘텐츠\냉장고\최종본(북미)_0310\fr-CA_LG_RF_How_To_Video_220316'
+path = r'D:\영상콘텐츠\냉장고\언어Vari_220411_러시아'
 
 def line_list(path, Episode):
     '''폴더내 파일명 리스트 만들기'''

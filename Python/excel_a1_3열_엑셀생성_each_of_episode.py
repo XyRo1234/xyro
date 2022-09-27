@@ -46,17 +46,23 @@ for n, en_file in enumerate(en_txt_filenames):
             en_line_list.append(l.strip())
 
     bb_line_list = []
-    with open(f'{bb_path}{bb_txt_filenames[n]}','r',encoding = 'utf8') as File_Source:
-        data = File_Source.readlines()
-        for l in data:
-            bb_line_list.append(l.strip())
-    
-    cc_line_list = []
-    with open(f'{cc_path}{cc_txt_filenames[n]}','r',encoding = 'utf8') as File_Source:
-        data = File_Source.readlines()
-        for l in data:
-            cc_line_list.append(l.strip())
+    try:
+        with open(f'{bb_path}{bb_txt_filenames[n]}','r',encoding = 'utf8') as File_Source:
+            data = File_Source.readlines()
+            for l in data:
+                bb_line_list.append(l.strip())
+    except IndexError:
+        print('bb_line_list IndexError'+ str(en_file))
 
+
+    cc_line_list = []
+    try:
+        with open(f'{cc_path}{cc_txt_filenames[n]}','r',encoding = 'utf8') as File_Source:
+            data = File_Source.readlines()
+            for l in data:
+                cc_line_list.append(l.strip())
+    except IndexError:
+        print('cc_line_list IndexError'+ str(en_file))
 
 
     dic = {

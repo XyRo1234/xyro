@@ -12,8 +12,11 @@ soup = BeautifulSoup(res.text, "lxml")    # Html정보를 lxml파서를 통해�
 countrys = {}
 data = soup.find_all("a", attrs={"data-link-area":"select_your_region"})
 for i in data:
+    # try:
     name_lang = i["data-link-name"]
     site = i["href"]
+    # except:
+    #     print(i)
     if "http" in site:
         countrys[name_lang] = site
     else:

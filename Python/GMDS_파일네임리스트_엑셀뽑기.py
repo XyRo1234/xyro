@@ -13,7 +13,7 @@ draft_filenames = os.listdir(Create_path)
 
 filenames = []                       # 골라낸 파일 리스트
 for i in draft_filenames:
-    if '.txt' in i:              # 'txt' or 'srt'가 포함되어있는 리스트 골라내기
+    if '.txt'or'.srt'or'.ssml' in i:              # 'txt' or 'srt'가 포함되어있는 리스트 골라내기
         filenames.append(i)
 filenames.sort()
 
