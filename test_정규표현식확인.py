@@ -80,8 +80,8 @@ import re
 file_name = 'New_(US_SRT)E01_How_to_Use_the_Ice_and_Water_Dispenser_211221.txt'
 p = re.compile("E\d{2}")
 print(p.search(file_name))  # <re.Match object; span=(12, 15), match='E01'>
-m = p.search(file_name)
-m.group()
+m = p.search(file_name)       # <re.Match object; span=(12, 15), match='E01'>
+m.group()                   # E01
 print(m.group())            # E01
 
 

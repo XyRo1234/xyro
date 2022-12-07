@@ -14,7 +14,7 @@ print(a+b)
 print(a/b)  #나누기 값
 print(a//b) #나누기 몫
 print(a%b)  #나누기 나머지
-print(d*2)
+print(d**2) # 제곱
 
 
 #문자열

@@ -12,6 +12,7 @@ import numpy
 from chardet import detect
 from openpyxl.styles import Font, Border, Side, PatternFill, Alignment
 from openpyxl import load_workbook
+import datetime
 
 '''test23_엑셀toSRT_전환기능_2 / test23_2D텍스트뽑기 두개합친파일'''
 '''Airtable에서 다운받은 csv파일로 srt, txt, 2Dtext엑셀파일 생성'''
@@ -20,6 +21,7 @@ root = Tk()
 root.title("Airtable Excel Transform")
 #root.geometry("640x480+300+100") # 가로 * 세로 + x좌표 + y좌표
 
+dnow = datetime.datetime.now()
 
 
 # 파일선택 추가
@@ -73,6 +75,7 @@ def start_1():
             df.rename(columns={'癤풬o':'Ep_No'}, inplace=True) # 열이름 변경하기
 
         df = df.filter(items=['No','Episode','SRT_Time_Code','SRT/SSML'])     # df필요한 열만 추출
+        df.dropna(subset=['Episode'], axis=0, inplace=True)                   # Episode열의 결측치(nan) 제거
 
         df_ep_list_draft = df['Episode'].values.tolist()    # Episode 리스트 만들기 ( [E01,E01,E02,E02,E02,E03,...] )
         df_ep_list = []                             # Episode 리스트 중복값 제거
@@ -80,13 +83,13 @@ def start_1():
             if value not in df_ep_list:             # Episode 리스트 중복값 제거
                 df_ep_list.append(value)            # Episode 리스트 중복값 제거
         df_ep_list.sort
-        # print(df_ep_list)
+        print(df_ep_list)
 
         for i,value in enumerate(df_ep_list):           # Episode별 순차진행
             df_ep = df.loc[(df['Episode'] == value)]    # Episode별 순차진행/특정Ep의 df만 남기기
             # print(df_ep)
             # 파일생성 및 data 입력
-            with open(f'{path}\\(SRT){value}.srt', 'w', encoding='utf8') as fl:   # 파일 생성
+            with open(f'{path}\\(SRT){value}_{dnow.strftime("%y%m%d")}.srt', 'w', encoding='UTF-8-SIG') as fl:   # 파일 생성
                 for i in range(0,df_ep.shape[0]):      # df.shape = [행수,열수] / 따라서 행수만큼 반복
                     fl.write('\n')
                     fl.write(str(i+1))
@@ -95,9 +98,9 @@ def start_1():
                     fl.write('\n')
                     fl.write(str(df_ep.loc[(df_ep['No']==i+1)]['SRT/SSML'].values[0]).strip())
                     # print(str(df_ep.loc[(df_ep['No']==i+1)]['SRT/SSML'].values[0]).strip())
-                    fl.write('\n')    
+                    fl.write('\n')
 
-            with open(f'{path}\\(SSML){value}.txt', 'w', encoding='utf8') as fl:   # 파일 생성
+            with open(f'{path}\\{value}_{dnow.strftime("%y%m%d")}.txt', 'w', encoding='UTF-8-SIG') as fl:   # 파일 생성
                 for i in range(0,df_ep.shape[0]):      # df.shape = [행수,열수] / 따라서 행수만큼 반복
                     fl.write(str(df_ep.loc[(df_ep['No']==i+1)]['SRT/SSML'].values[0]).strip())
                     # print(str(df_ep.loc[(df_ep['No']==i+1)]['SRT/SSML'].values[0]).strip())
@@ -136,7 +139,7 @@ def start_2():
         newfile_name = 'E'+m.group() # E01 등
 
         # xlsx_name = excelfile.split('.csv')[0] + '.xlsx'    # 파일명 확장자 csv -> xlsx로 바꾸기
-        xlsx_name = path + '\\(en-GB)_2D Text_All.xlsx'       # 생성되는 2D Text 엑셀파일명
+        xlsx_name = path + '\\2D Text_'+dnow.strftime("%y%m%d")+'.xlsx'       # 생성되는 2D Text 엑셀파일명
 
         """ 엑셀파일생성 및 첫 시트 만들기 """
         if excelfile == list_file.get(0, END)[0]:                # 첫번째 파일이면 실행해라!

@@ -37,6 +37,11 @@ for i in cc_filenames:
 cc_txt_filenames.sort()
 
 
+def new_func(Create_path, newfile_name):
+    """뽑은엑셀에서 열너비 지정, 오른쪽가운데정렬, 자동줄바꿈 활성화 시켜서 저장"""
+    wb = load_workbook(f"{Create_path}test_{newfile_name}.xlsx")
+    return wb
+
 for n, en_file in enumerate(en_txt_filenames):
 
     en_line_list = []
@@ -81,8 +86,7 @@ for n, en_file in enumerate(en_txt_filenames):
     """ DataFrame을 엑셀로 뽑기 """
     df.to_excel(f'{Create_path}test_{newfile_name}.xlsx',sheet_name=f'{newfile_name}', header = True, index = False)
 
-    """뽑은엑셀에서 열너비 지정, 오른쪽가운데정렬, 자동줄바꿈 활성화 시켜서 저장"""
-    wb = load_workbook(f"{Create_path}test_{newfile_name}.xlsx")
+    wb = new_func(Create_path, newfile_name)
     ws = wb.active
     ws.column_dimensions["A"].width = 70
     ws.column_dimensions["B"].width = 70

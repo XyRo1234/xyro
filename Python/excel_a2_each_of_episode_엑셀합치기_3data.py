@@ -3,13 +3,16 @@ import pandas as pd
 from openpyxl.styles import Font, Border, Side, PatternFill, Alignment
 from openpyxl import load_workbook
 import re
+import datetime
 
 """
 EP01, EP02, ... 생성된 엑셀파일을 하나의 엑셀파일에 통합
 """
 
+dnow = datetime.datetime.now()
+
 path = 'D:\\Program Files\\Workspace\\00_Create\\'
-final_name = 'Script_sheets.xlsx'
+final_name = 'Script_sheets_'+dnow.strftime("%y%m%d")+'.xlsx'
 filenames_draft = os.listdir(path)
 
 filenames = []                    # 골라낸 파일넣을 리스트 생성
@@ -52,7 +55,7 @@ for i,wsname in enumerate(wsnames):
     hearder=[]
     for seq, name in enumerate(range(1, sheet.max_column + 1)):
         header = sheet.cell(row=1, column=seq+1)
-        header.font = Font(color="000000FF", bold=True, size = 14)
+        header.font = Font(color="00000000", bold=True, size = 14)
         header.alignment = Alignment(horizontal="center", vertical="center")
     # sheet['A1'] = 'en-Origin'
     # sheet['A1'].font = Font(bold=True)
