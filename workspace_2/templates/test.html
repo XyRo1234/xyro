@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta charset="utf-8" />
+    <script>
+      // setup the video element and attach it to the Dash player
+      function setupVideo() {
+        var url =
+          "https://player.vimeo.com/external/764781874.mpd?s=923025251fc6ffe1d70ed0369b178b9b6c9b12e5";
+        var context = new Dash.di.DashContext();
+        var player = new MediaPlayer(context);
+        player.startup();
+        player.attachView(document.querySelector("#videoplayer"));
+        player.attachSource(url);
+      }
+    </script>
+
+    <style>
+      video {
+        width: 100%;
+        max-width: 640px;
+        height: auto;
+      }
+    </style>
+
+
+    <script>
+      function q1() {
+        $.ajax({
+          // .ajax
+          type: "GET",
+          url: "http://spartacodingclub.shop/sparta_api/seoulair",
+          data: {},
+          success: function (response) {
+            let mise_list = response["RealtimeCityAir"]["row"];
+            for (let i = 0; i < 3; i++) {
+              let mise = mise_list[i];
+              let gu_name = mise["MSRSTE_NM"];
+              let gu_mise = mise["IDEX_MVL"];
+              // console.log(gu_name, gu_mise);
+              let temp_html = `<li>${gu_name}:${gu_mise}</li>`;
+              $("#top-header--title").append(temp_html); // .append
+            }
+          },
+        });
+      }      
+      // function q2() {
+      //   $.ajax({
+      //     // .ajax
+      //     type: "GET",
+      //     url: "http://132.226.21.169:5000",
+      //     data: {},
+      //     // dataType: "json",
+      //     success: function (response) {
+      //       let test = response;
+      //       // let test = response[0]["name"];
+      //       console.log(test);
+      //       $("#test").text(test);
+      //     },
+      //   });
+      // }      
+      function q3() {
+        let ezdispense = "https://rebrand.ly/vivace/ezdispense";
+        $("#test3").text(ezdispense);
+        $("#videoPlayer_3").attr("src", ezdispense);
+      }
+      // function q4() {
+      //   $.ajax({
+      //     type: "POST",
+      //     url: "http://10.175.76.36:5000/test",
+      //     data: { data_1: "vs" },
+      //     success: function (response) {
+      //       console.log(response);
+      //     },
+      //   });
+      // }
+      function q5() {
+        $.ajax({
+          type: "POST",
+          // url: "http://10.175.76.36:5000",
+          url: "http://132.226.21.169:5000",
+          data: { data_1: "vs" },
+          success: function (response) {
+            console.log(response);
+            $("#test5").text(response);
+            $("#videoPlayer_5").attr("src", response);
+          },
+        });
+      }
+    </script>
+
+
+    <!-- <script>
+      $(document).ready(function () {
+        q1();
+        q2();
+        q3();
+      });
+    </script>
+  </head> -->
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+        q1();
+        // q2();
+        q3();
+        // q4();
+        q5();
+        //실행될 코드
+    })
+</script>
+
+  <body onload="setupVideo()">
+    <div class="top-header--title" id="top-header--title">
+      kk
+      <h1>제품 사용설명서 test</h1>
+      <p><span></span></p>
+      <li id="test1">test</li>
+      <li id="test3">test3</li>
+      <li id="test5">test5</li>
+      <li>위치:미세먼지수치</li>
+    </div>
+    <div>
+      <div>
+        <p>[dash.js]</p>
+        <video id="videoplayer" controls></video>
+      </div>
+      <p>[video 2]</p>
+      <video
+      id="videoPlayer_3"
+      autoplay
+      muted
+      loop
+    ></video>
+    <p>[video 3]</p>
+      <video
+      id="videoPlayer_5"
+      autoplay
+      muted
+      loop
+    ></video>
+  </div>
+
+    </div>
+    <!-- "https://rebrand.ly/vs/drawer_remove" -->
+    <!-- dash 코드 -->
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <!-- DASH-AVC/265 reference implementation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/1.6.0/dash.all.js"></script>
+
+    
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <script src="./assets/js/routie.js"></script>
+    <script src="./assets/js/remodal.js"></script>
+    <script src="./assets/js/swiper.min.js"></script>
+    <script src="./res/js/indexer.js"></script>
+    <script src="./assets/js/search.js"></script>
+    <script src="./assets/js/search_process.js"></script>
+    <script src="./assets/js/jquery.simplePagination.js"></script>
+    <script src="./assets/js/jquery.cookie.js"></script>
+  </body>
+</html>
