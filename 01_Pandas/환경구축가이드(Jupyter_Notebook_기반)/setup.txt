@@ -1,0 +1,29 @@
+[파이선 설치]
+
+https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe
+
+
+
+[Visual C++ 재배포 가능 패키지 설치]
+
+https://aka.ms/vs/16/release/vc_redist.x64.exe
+
+
+
+[개별 패키지 설치]
+
+pip install --upgrade --user notebook matplotlib numpy openpyxl xlrd xlwt pandas seaborn matplotlib
+
+
+[특정 버전을 지정하여 개별 패키지를 설치하는 예]
+pip install --upgrade --user notebook matplotlib numpy==1.19,5 openpyxl xlrd xlwt pandas seaborn matplotlib
+
+
+[개별 패키지 삭제 (필요 시에만)]
+
+pip uninstall notebook matplotlib numpy openpyxl xlrd xlwt pandas seaborn matplotlib
+
+
+[pip 패키지 최신버전으로 업그레이드 (필요 시에만)]
+python -m pip install --upgrade pip
+

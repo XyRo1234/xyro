@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="File">
+    <file>border.png</file>
+    <file>pattern.png</file>
+    <file>setting.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="align">
+    <file>images/align_center.png</file>
+    <file>images/align_justify.png</file>
+    <file>images/align_left.png</file>
+    <file>images/align_right.png</file>
+  </qresource>
+</RCC>

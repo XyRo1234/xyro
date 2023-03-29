@@ -1,0 +1,81 @@
+div.CodeMirror, div.output_area pre, div.output_wrapper pre {
+	font-family: D2Coding; 
+	font-size: 16.5pt; 
+	line-height: 120%;
+	
+}
+div#notebook, div.prompt {
+	font-family: D2Coding; 
+	font-size: 16pt; 
+	line-height: 120%;
+	min-width:1ex; /* 셀 왼쪽여백 최소로 줄임 */
+}
+
+div.prompt bdi{ /* in/out 제거 */
+	display:none
+}
+
+.cm-s-ipython.CodeMirror {background: #ffffff;}
+
+.rendered_html td {
+
+ font-family: D2Coding; 
+
+ font-size: 16pt; 
+
+}
+
+.rendered_html table {
+
+ font-family: D2Coding; 
+
+ margin-left: 8px;
+
+ font-size: 16px;
+
+ margin-right: auto;
+
+ border: none;
+
+ border-collapse: collapse;
+
+ border-spacing: 0;
+
+/* color: #cccccc; */
+
+ table-layout: fixed;
+
+}
+
+.rendered_html thead  {
+
+ font-family: D2Coding; 
+
+ /*font-size: 10.3pt !important;*/
+
+ font-size: 16pt;
+
+/* background: #1e1e1e;
+
+ color: #cccccc;*/
+
+ border-bottom: 1px solid #1e1e1e;
+
+ vertical-align: bottom;
+
+}
+
+.rendered_html th {
+
+ border-style: none;
+
+ font-family: D2Coding; 
+
+ font-size: 16pt;
+
+}
+
+
+
+
+
